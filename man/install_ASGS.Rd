@@ -4,14 +4,33 @@
 \alias{install_ASGS}
 \title{Install a (nearly) complete package of the Australian Statistical Geography Standard}
 \usage{
-install_ASGS(temp.tar.gz = tempfile(fileext = ".tar.gz"), ...)
+install_ASGS(temp.tar.gz = tempfile(fileext = ".tar.gz"), overwrite = FALSE,
+  lib = .libPaths()[1], repos = getOption("repos"),
+  type = getOption("pkgType", "source"), ..., .reinstalls = 4L,
+  verbose = FALSE)
 }
 \arguments{
-\item{temp.tar.gz}{A file to save the ASGS tarball. Since the package is quite large,
-it may be prudent to set this to a non-temporary file so that you can attempt reinstallation.}
+\item{temp.tar.gz}{A file to save the ASGS tarball after download. Since the package is quite large,
+it may be prudent to set this to a non-temporary file so that subsequent attempts to reinstall do not require additional downloads.}
 
-\item{...}{Arguments passed to \code{\link[utils]{install.packages}}.}
+\item{overwrite}{(logical, default: \code{FALSE}). If \code{temp.tar.gz} already exists, should it be overwritten or should there be an error?}
+
+\item{lib, repos, type}{Passed to \code{\link[utils]{install.packages}} when installing ASGS's dependencies (if not already installed).}
+
+\item{...}{Other arguments passed to \code{\link[utils]{install.packages}}.}
+
+\item{.reinstalls}{Number of times to attempt to install any (absent) dependencies of \code{ASGS}
+before aborting. Try restarting R rather than setting this number too high.}
+
+\item{verbose}{(logical, default: \code{FALSE}) Report logic paths?}
+}
+\value{
+\code{temp.tar.gz}, invisibly.
 }
 \description{
-Install a (nearly) complete package of the Australian Statistical Geography Standard
+The ASGS package provides a nearly comprehensive set of shapefiles, both unmodified and simplified from the Australian Bureau of Statistics. The ASGS package is over 700 MB, so cannot be hosted on CRAN. This function allows the package to be distributed almost as conveniently as through CRAN.
+
+Should you find ASGS lacks some shapefile that you require, please file an issue requesting it be added.
+
+Note that the package is quite large and provides no limits on access, so it is preferred that distribution occur as far as possible via other channels to ensure the method of access provided here is sustainable.
 }
