@@ -1,6 +1,6 @@
-e056db41122cbcf22f91c5c070ebd0c2 *DESCRIPTION
+d8856c453a784a9d3c9e487fecd92bae *DESCRIPTION
 ed88df3820d7fcd484c8bf3b78b70fe2 *NAMESPACE
-20825c363fe882451ed93e69f1125678 *NEWS.md
+9167826ecccd99e20dae2b2cb45f8dbb *NEWS.md
 9fe2fc383ff3693e1d2cb56545924341 *R/data-STE_2016.R
 3b23cec685d9d79f8117e13743fc438d *R/install_ASGS.R
 594dd2e4bfffb4abddda17b974b06d58 *R/latlon2SA.R
@@ -11,5 +11,5 @@ ed88df3820d7fcd484c8bf3b78b70fe2 *NAMESPACE
 5ebe4eb3543ce2d995f6db5107b30286 *man/install_ASGS.Rd
 38739beb607fe7a824e1c3d4f58be473 *man/latlon2SA.Rd
 33811cc3e0e5035a81218d286b2732a1 *tests/testthat.R
-c5fbac4d0056bfd4a40af190cef6674b *tests/testthat/test-install_asgs.R
+d631ab76c2a4e317738d7e3d40ca26d2 *tests/testthat/test-install_asgs.R
 1ec2d48648882f235079b3414d8552fc *tests/testthat/test-latlon2sa.R

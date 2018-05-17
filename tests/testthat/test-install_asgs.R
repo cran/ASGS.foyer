@@ -2,7 +2,9 @@ context("test-install_asgs.R")
 
 test_that("Installation OK", {
   skip_on_cran()
-  tempf <- normalizePath(tempfile("01"), winslash = "/")
+  .tempf <- tempfile("01")
+  file.create(.tempf)
+  tempf <- normalizePath(.tempf, winslash = "/")
   skip_if(dir.exists(tempf))
   dir.create(tempf)
   install_notpossible <-
