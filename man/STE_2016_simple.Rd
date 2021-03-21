@@ -4,7 +4,9 @@
 \name{STE_2016_simple}
 \alias{STE_2016_simple}
 \title{State shapefile}
-\format{An object of class \code{SpatialPolygonsDataFrame} with 9 rows and 4 columns.}
+\format{
+An object of class \code{SpatialPolygonsDataFrame} with 9 rows and 4 columns.
+}
 \usage{
 STE_2016_simple
 }

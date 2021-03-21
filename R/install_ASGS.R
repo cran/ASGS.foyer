@@ -11,6 +11,9 @@
 #' @param ... Other arguments passed to \code{\link[utils]{install.packages}}.
 #' @param .reinstalls Number of times to attempt to install any (absent) dependencies of \code{ASGS}
 #' before aborting. Try restarting R rather than setting this number too high.
+#' @param url.tar.gz The URL of the tarball to be downloaded. Not normally
+#' needed by users, but may be in case the link becomes fallow, and
+#' a new one becomes available before the release of a new package entirely.
 #' @param verbose (logical, default: \code{FALSE}) Report logic paths?
 #' @return \code{temp.tar.gz}, invisibly.
 #' @export
@@ -22,7 +25,11 @@ install_ASGS <- function(temp.tar.gz = tempfile(fileext = ".tar.gz"),
                          type = getOption("pkgType", "source"),
                          ...,
                          .reinstalls = 4L,
+                         url.tar.gz = NULL,
                          verbose = FALSE) {
+  if (is.null(url.tar.gz)) {
+    url.tar.gz <- "https://github.com/HughParsonage/ASGS/releases/download/v040tar/ASGS_0.4.0.tar.gz"
+  }
   tempf <- temp.tar.gz
   if (file.exists(tempf)) {
     if (!identical(overwrite, FALSE) && !isTRUE(overwrite)) {
@@ -58,7 +65,7 @@ install_ASGS <- function(temp.tar.gz = tempfile(fileext = ".tar.gz"),
             reinstalls, " reinstalls remaining.")
     Sys.sleep(backoff)
     if (backoff > 10) {
-      message("Waiting ", backoff, " seconds before attempting to reinstallation.",
+      message("Waiting ", backoff, " seconds before attempting reinstallation.",
               "Wait times double on each reattempt as a courtesy to repository maintainers.")
     }
     r <- repos
@@ -97,10 +104,10 @@ install_ASGS <- function(temp.tar.gz = tempfile(fileext = ".tar.gz"),
          "Attempts to install did not succeed. Aborting before (lengthy) download.")
   }
 
-  message("Attempting install of ASGS (700 MB) from Dropbox. ",
+  message("Attempting install of ASGS (700 MB) from GitHub. ",
           "This should take some minutes to download.")
 
-  utils::download.file(url = "https://dl.dropbox.com/s/zmggqb1wmmv7mqe/ASGS_0.4.0.tar.gz",
+  utils::download.file(url = url.tar.gz,
                        destfile = tempf)
   utils::install.packages(tempf,
                           lib = lib,

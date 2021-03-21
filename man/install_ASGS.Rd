@@ -4,10 +4,17 @@
 \alias{install_ASGS}
 \title{Install a (nearly) complete package of the Australian Statistical Geography Standard}
 \usage{
-install_ASGS(temp.tar.gz = tempfile(fileext = ".tar.gz"), overwrite = FALSE,
-  lib = .libPaths()[1], repos = getOption("repos"),
-  type = getOption("pkgType", "source"), ..., .reinstalls = 4L,
-  verbose = FALSE)
+install_ASGS(
+  temp.tar.gz = tempfile(fileext = ".tar.gz"),
+  overwrite = FALSE,
+  lib = .libPaths()[1],
+  repos = getOption("repos"),
+  type = getOption("pkgType", "source"),
+  ...,
+  .reinstalls = 4L,
+  url.tar.gz = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{temp.tar.gz}{A file to save the ASGS tarball after download. Since the package is quite large,
@@ -21,6 +28,10 @@ it may be prudent to set this to a non-temporary file so that subsequent attempt
 
 \item{.reinstalls}{Number of times to attempt to install any (absent) dependencies of \code{ASGS}
 before aborting. Try restarting R rather than setting this number too high.}
+
+\item{url.tar.gz}{The URL of the tarball to be downloaded. Not normally
+needed by users, but may be in case the link becomes fallow, and
+a new one becomes available before the release of a new package entirely.}
 
 \item{verbose}{(logical, default: \code{FALSE}) Report logic paths?}
 }

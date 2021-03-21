@@ -4,9 +4,15 @@
 \alias{latlon2SA}
 \title{Determine whether coordinates lie in a given statistical area.}
 \usage{
-latlon2SA(lat, lon, to = c("STE", "SA2", "SA1", "SA3", "SA4"),
-  yr = c("2016", "2011"), return = c("v", "sp"), NAME = TRUE,
-  .shapefile = NULL)
+latlon2SA(
+  lat,
+  lon,
+  to = c("STE", "SA2", "SA1", "SA3", "SA4"),
+  yr = c("2016", "2011"),
+  return = c("v", "sp"),
+  NAME = TRUE,
+  .shapefile = NULL
+)
 }
 \arguments{
 \item{lat, lon}{Numeric vector representing coordinates in decimal degrees. Coordinates south of the equator have \code{lat < 0}.}
