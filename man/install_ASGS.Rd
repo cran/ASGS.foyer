@@ -31,7 +31,10 @@ before aborting. Try restarting R rather than setting this number too high.}
 
 \item{url.tar.gz}{The URL of the tarball to be downloaded. Not normally
 needed by users, but may be in case the link becomes fallow, and
-a new one becomes available before the release of a new package entirely.}
+a new one becomes available before the release of a new package entirely.
+
+If set to special value \code{"latest"}, an online file is consulted and
+set to the remote file there.}
 
 \item{verbose}{(logical, default: \code{FALSE}) Report logic paths?}
 }

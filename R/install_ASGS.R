@@ -14,6 +14,10 @@
 #' @param url.tar.gz The URL of the tarball to be downloaded. Not normally
 #' needed by users, but may be in case the link becomes fallow, and
 #' a new one becomes available before the release of a new package entirely.
+#'
+#' If set to special value \code{"latest"}, an online file is consulted and
+#' set to the remote file there.
+#'
 #' @param verbose (logical, default: \code{FALSE}) Report logic paths?
 #' @return \code{temp.tar.gz}, invisibly.
 #' @export
@@ -28,7 +32,10 @@ install_ASGS <- function(temp.tar.gz = tempfile(fileext = ".tar.gz"),
                          url.tar.gz = NULL,
                          verbose = FALSE) {
   if (is.null(url.tar.gz)) {
-    url.tar.gz <- "https://github.com/HughParsonage/ASGS/releases/download/v040tar/ASGS_0.4.0.tar.gz"
+    url.tar.gz <- "https://github.com/HughParsonage/ASGS/releases/download/v2021.1/ASGS_2021.1.tar.gz"
+  }
+  if (identical(url.tar.gz, "latest")) {
+    url.tar.gzs <- readLines("https://raw.githubusercontent.com/HughParsonage/ASGS.foyer/master/data-raw/ASGS-release-tarballs")[1]
   }
   tempf <- temp.tar.gz
   if (file.exists(tempf)) {
@@ -46,7 +53,7 @@ install_ASGS <- function(temp.tar.gz = tempfile(fileext = ".tar.gz"),
   asgs_deps <-
     c("dplyr", "leaflet", "sp",
       "htmltools", "magrittr",
-      "rgdal", "data.table", "hutils",
+      "data.table", "hutils",
       "spdep")
 
   absent_deps <- function(deps = asgs_deps) {
@@ -106,8 +113,9 @@ install_ASGS <- function(temp.tar.gz = tempfile(fileext = ".tar.gz"),
 
   message("Attempting install of ASGS (700 MB) from GitHub. ",
           "This should take some minutes to download.")
-
+  options(timeout = 3600)
   utils::download.file(url = url.tar.gz,
+                       mode = "wb",
                        destfile = tempf)
   utils::install.packages(tempf,
                           lib = lib,

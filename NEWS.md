@@ -2,6 +2,14 @@
 
 # ASGS.foyer
 
+## ASGS.foyer 0.3.3
+
+* Bad link in README
+
+## ASGS.foyer 0.3.2
+
+* Attempt new install logic that does not require obsolete package rgdal to be installed.
+
 ## ASGS.foyer 0.3.1
 * Use `NULL` as default for `url.tar.gz` to avoid overflow
 
